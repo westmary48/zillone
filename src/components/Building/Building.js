@@ -1,14 +1,14 @@
 import React from 'react';
 import './Building.scss';
 
-class ListingForm extends React.Component {
+class Building extends React.Component {
   render() {
     return (
-            <div className = "Listing Form col">
+            <div className = "Building col">
             <h2>ListingForm</h2>
             </div>
     );
   }
 }
 
-export default ListingForm;
+export default Building;
