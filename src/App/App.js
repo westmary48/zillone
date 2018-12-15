@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import 'firebase/auth';
 import firebase from 'firebase/app';
 
@@ -16,6 +17,10 @@ import './App.scss';
 import authRequest from '../helpers/data/authRequest';
 
 class App extends Component {
+  static PropTypes = {
+    listings: PropTypes.arrayOf(PropTypes.object),
+  }
+
   state = {
     authed: false,
     listings: [],
