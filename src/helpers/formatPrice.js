@@ -6,5 +6,4 @@ const formatPrice = dollars => dollars.toLocaleString(
   },
 );
 
-
 export default formatPrice;

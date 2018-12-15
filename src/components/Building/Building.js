@@ -4,9 +4,9 @@ import './Building.scss';
 class Building extends React.Component {
   render() {
     return (
-            <div className = "Building col">
-            <h2>ListingForm</h2>
-            </div>
+      <div className="building col">
+        <h2>Building</h2>
+      </div>
     );
   }
 }

@@ -10,7 +10,6 @@ const listingShape = PropTypes.shape({
   cooling: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   uid: PropTypes.string.isRequired,
-
 });
 
 export default listingShape;
