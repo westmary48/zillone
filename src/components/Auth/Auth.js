@@ -1,8 +1,13 @@
 import React from 'react';
 import './Auth.scss';
+import PropTypes from 'prop-types';
 import authRequests from '../../helpers/data/authRequest';
 
 class Auth extends React.Component {
+  static propTypes = {
+    isAuthenticated: PropTypes.string,
+  }
+
   authenticateUser = (e) => {
     e.preventDefault();
     authRequests.authenticate().then(() => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import './MyNavbar.scss';
+import PropTypes from 'prop-types';
 import {
   Collapse,
   Navbar,
@@ -10,14 +10,21 @@ import {
   NavLink,
 } from 'reactstrap';
 
+import './MyNavbar.scss';
+
 
 class MyNavbar extends React.Component {
+static propTypes = {
+  isAuthed: PropTypes.bool,
+  logoutClickEvent: PropTypes.func,
+}
+
     state = {
       isOpen: false,
     };
 
     render() {
-      // const isAuthed = this.props.isAuthed;
+      // const isAuthed = .isAuthed;
       const { isAuthed, logoutClickEvent } = this.props;
       return (
             <div className = "my-navbar">
