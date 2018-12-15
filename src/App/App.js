@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import 'firebase/auth';
 import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import connection from '../helpers/data/connections';
 
@@ -14,13 +13,9 @@ import MyNavbar from '../components/MyNavbar/MyNavbar';
 import listingRequests from '../helpers/data/listingRequests';
 
 import './App.scss';
-import authRequest from '../helpers/data/authRequest';
+import authRequests from '../helpers/data/authRequest';
 
 class App extends Component {
-  static PropTypes = {
-    listings: PropTypes.arrayOf(PropTypes.object),
-  }
-
   state = {
     authed: false,
     listings: [],
@@ -28,7 +23,6 @@ class App extends Component {
 
   componentDidMount() {
     connection();
-
     listingRequests.getRequest()
       .then((listings) => {
         this.setState({ listings });
@@ -69,34 +63,33 @@ class App extends Component {
 
   render() {
     const logoutClickEvent = () => {
-      authRequest.logoutUser();
+      authRequests.logoutUser();
       this.setState({ authed: false });
     };
 
     if (!this.state.authed) {
       return (
         <div className="App">
-
-        <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent}/>
-        <div className="row">
-        <Auth isAuthenticated={this.isAuthenticated}/>
+          <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent} />
+          <div className="row">
+            <Auth isAuthenticated={this.isAuthenticated}/>
           </div>
-          </div>
+        </div>
       );
     }
     return (
       <div className="App">
-      <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent}/>
-      <div className="row">
-      < Listings
-      listings={this.state.listings}
-      deleteSingleListing = {this.listingId}
-      />
-      <Building />
-      </div>
-      <div className="row">
-      <ListingForm />
-      </div>
+        <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent} />
+        <div className="row">
+          <Listings
+            listings={this.state.listings}
+            deleteSingleListing={this.deleteOne}
+          />
+          <Building />
+        </div>
+        <div className="row">
+          <ListingForm />
+        </div>
       </div>
     );
   }
