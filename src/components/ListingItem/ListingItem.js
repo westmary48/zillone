@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './ListingItem.scss';
 import listingShape from '../../helpers/propz/listingShape';
@@ -8,6 +9,13 @@ import authRequests from '../../helpers/data/authRequest';
 class ListingItem extends React.Component {
     static propTypes = {
       listing: listingShape,
+      deleteSingleListing: this.PropTypes.func,
+    }
+
+    deleteEvent = (e) => {
+      e.preventDeault();
+      const { deleteSingleListing, listing } = this.props;
+      deleteSingleListing(listing.id);
     }
 
     render() {
@@ -19,7 +27,7 @@ class ListingItem extends React.Component {
           return (
           <div>
             <span class Name = "col">
-            <button className="btn btn-default">
+            <button className="btn btn-default" onClick={this.deleteEvent}>
             <i className="fas-trash-alt"></i>
             </button></span>
             </div>
