@@ -11,12 +11,21 @@ class ListingItem extends React.Component {
   static propTypes = {
     listing: listingShape,
     deleteSingleListing: PropTypes.func,
+    passListingToEdit: PropTypes.func,
+
   }
 
   deleteEvent = (e) => {
     e.preventDefault();
     const { deleteSingleListing, listing } = this.props;
     deleteSingleListing(listing.id);
+  }
+
+  editEvent = (e) => {
+    e.preventDefault();
+    const { passListingToEdit, listing } = this.props;
+    console.log(passListingToEdit);
+    passListingToEdit(listing.id);
   }
 
   render() {
@@ -30,6 +39,11 @@ class ListingItem extends React.Component {
             <span className="col">
               <button className="btn btn-default" onClick={this.deleteEvent}>
                 <i className="fas fa-trash-alt"></i>
+              </button>
+            </span>
+            <span className="col">
+              <button className="btn btn-default" onClick={this.editEvent}>
+                <i className="fas fa-pencil-alt"></i>
               </button>
             </span>
           </div>
